@@ -1,0 +1,29 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.app {
+  text-align: center;
+}
+
+.app-logo {
+  pointer-events: none;
+  height: 32px;
+  margin: 0 30px;
+}
+
+.app-header {
+  background-color: #282c34;
+  height: 64px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 32px;
+  color: white;
+}
+
