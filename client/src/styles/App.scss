@@ -27,6 +27,12 @@ body {
   color: white;
 }
 
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .grid {
   display: flex;
   align-content: center;
@@ -53,5 +59,23 @@ body {
 
   &.cell-unfilled {
     background-color: blue;
+  }
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-evenly;
+
+  button {
+    margin: 0 2px;
+    user-select: none;
+  }
+}
+
+.toolbar-row {
+  display: flex;
+
+  + .toolbar-row {
+    margin-left: 30px;
   }
 }
