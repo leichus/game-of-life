@@ -27,3 +27,31 @@ body {
   color: white;
 }
 
+.grid {
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.board-row {
+  display: flex;
+}
+
+.board-cell {
+  height: 30px;
+  border: 1px solid black;
+  width: 30px;
+  cursor: pointer;
+  user-select: none;
+  color: white;
+  font-size: 8px;
+
+  &.cell-filled {
+    background-color: red;
+  }
+
+  &.cell-unfilled {
+    background-color: blue;
+  }
+}
