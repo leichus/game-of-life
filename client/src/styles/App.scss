@@ -65,6 +65,10 @@ body {
 .toolbar {
   display: flex;
   justify-content: space-evenly;
+  position: fixed;
+  bottom: 0;
+  padding: 20px;
+  background-color: white;
 
   button {
     margin: 0 2px;
@@ -72,10 +76,10 @@ body {
   }
 }
 
-.toolbar-row {
+.toolbar-row-section {
   display: flex;
 
-  + .toolbar-row {
+  + .toolbar-row-section {
     margin-left: 30px;
   }
 }
