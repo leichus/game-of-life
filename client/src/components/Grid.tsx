@@ -21,7 +21,7 @@ export const Grid = (props: GridConfig) => {
                          key={ colNum }
                     >
                       { /*for debugging*/ }
-                      { `${ rowNum },${ colNum }` }
+                      {/*{ `${ rowNum },${ colNum }` }*/}
                     </div>
                   );
                 })

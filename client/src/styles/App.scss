@@ -45,20 +45,20 @@ body {
 }
 
 .board-cell {
-  height: 30px;
+  height: 25px;
   border: 1px solid black;
-  width: 30px;
+  width: 25px;
   cursor: pointer;
   user-select: none;
   color: white;
   font-size: 8px;
 
   &.cell-filled {
-    background-color: red;
+    background-color: black;
   }
 
   &.cell-unfilled {
-    background-color: blue;
+    background-color: white;
   }
 }
 
@@ -70,7 +70,7 @@ body {
   padding: 20px;
   background-color: white;
 
-  button {
+  button, input {
     margin: 0 2px;
     user-select: none;
   }

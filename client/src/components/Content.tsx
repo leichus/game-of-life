@@ -1,14 +1,36 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Grid } from "./Grid";
 import { Toolbar } from "./Toolbar";
 
 export type Config = boolean[][];
-const allEmptyConfig = Array(10).fill(0).map(() => {
-  return Array(10).fill(false);
+const allEmptyConfig = Array(30).fill(0).map(() => {
+  return Array(30).fill(false);
 });
+
+const noop = () => {};
+
+const useInterval = (callback: () => void, delay: number | null) => {
+  const savedCallback = useRef(noop);
+
+  useEffect(() => {
+    savedCallback.current = callback;
+  });
+
+  useEffect(() => {
+    if (delay !== null) {
+      const id = setInterval(() => {
+        savedCallback.current();
+      }, delay);
+
+      return () => clearInterval(id);
+    }
+  }, [delay]);
+};
 
 export const Content = () => {
   const [currentConfig, setCurrentConfig] = useState<Config>(allEmptyConfig);
+  const [delay, setDelay] = useState(500);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const flipCell = (rowNum: number, colNum: number) => {
     setCurrentConfig(oldConf => {
@@ -19,13 +41,13 @@ export const Content = () => {
   };
 
   const increaseHeight = () => {
-    if (currentConfig.length < 30) {
+    if (currentConfig.length < 40) {
       setCurrentConfig(config => [...config, Array(config[0].length).fill(false)]);
     }
   };
 
   const increaseWidth = () => {
-    if (currentConfig[0].length < 30) {
+    if (currentConfig[0].length < 40) {
       setCurrentConfig(config => config.map(row => [...row, false]));
     }
   };
@@ -73,8 +95,12 @@ export const Content = () => {
       }
 
       return newConfig;
-    })
+    });
   };
+
+  useInterval(() => {
+    advanceOneFrame();
+  }, isPlaying ? delay : null);
 
   return (
     <div className="content">
@@ -86,6 +112,10 @@ export const Content = () => {
                decreaseHeight={ decreaseHeight }
                increaseHeight={ increaseHeight }
                advanceOneFrame={ advanceOneFrame }
+               isPlaying={ isPlaying }
+               toggleIsPlaying={ () => setIsPlaying(val => !val) }
+               delay={ delay }
+               setDelay={ setDelay }
       />
     </div>
   );
